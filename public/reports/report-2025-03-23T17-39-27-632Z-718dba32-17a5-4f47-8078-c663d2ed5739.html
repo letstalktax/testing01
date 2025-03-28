@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gourmet Gulf Co LLC - UAE Corporate Tax Analysis</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 25mm;
+    }
+    body {
+      font-family: "SF Pro", Arial, sans-serif;
+      line-height: 1.6;
+      color: #374151;
+      margin: 0;
+      padding: 0;
+      counter-reset: page;
+      background-color: #D1D5DB;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 15mm;
+      padding: 0 15mm;
+      background-color: #1E3A8A;
+      color: #FFFFFF;
+      z-index: 1000;
+    }
+    .company-name {
+      font-weight: bold;
+      font-size: 14px;
+      color: #FFFFFF;
+    }
+    .logo {
+      height: 10mm;
+      width: auto;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 10mm;
+      padding: 0 10mm;
+      background-color: #1E3A8A;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    .content {
+      background-color: white;
+      margin: 25mm 0;
+      padding: 20mm;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #1E3A8A;
+      font-size: 18pt;
+      font-weight: 700;
+      margin-bottom: 20px;
+      page-break-after: avoid;
+    }
+    h2 {
+      color: #1E3A8A;
+      font-size: 14pt;
+      font-weight: 700;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #1E3A8A;
+      font-size: 12pt;
+      font-weight: 700;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      page-break-after: avoid;
+    }
+    p {
+      font-size: 11pt;
+      margin-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      page-break-inside: avoid;
+      word-wrap: break-word;
+    }
+    table, th, td {
+      border: 1px solid #E5E7EB;
+    }
+    th {
+      background-color: #E5E7EB;
+      color: #374151;
+      font-weight: bold;
+      padding: 8px;
+      text-align: left;
+    }
+    td {
+      padding: 8px;
+      color: #374151;
+    }
+    ul, ol {
+      margin-left: 10mm;
+      color: #374151;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+    .page-number:after {
+      content: counter(page);
+      counter-increment: page;
+    }
+
+    /* Dark mode styles */
+    .dark-mode-report body {
+      background-color: #1E1E1E !important;
+      color: #FFFFFF !important;
+    }
+
+    .dark-mode-report .header {
+      background-color: #1E3A8A !important;
+      color: #FFFFFF !important;
+    }
+
+    .dark-mode-report .footer {
+      background-color: #1E3A8A !important;
+      color: #FFFFFF !important;
+    }
+
+    .dark-mode-report .content {
+      background-color: #262626 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .dark-mode-report h1,
+    .dark-mode-report h2,
+    .dark-mode-report h3 {
+      color: #2DD4BF !important;
+    }
+
+    .dark-mode-report table {
+      border-color: #374151 !important;
+    }
+
+    .dark-mode-report th {
+      background-color: #374151 !important;
+      color: #FFFFFF !important;
+    }
+
+    .dark-mode-report td {
+      border-color: #374151 !important;
+      color: #FFFFFF !important;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #1E3A8A;
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: #2DD4BF;
+      transform: scale(1.1);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media print {
+      body {
+        background-color: white;
+      }
+      .content {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+      }
+      h2, h3, table, section {
+        page-break-inside: avoid;
+      }
+      .theme-toggle {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="company-name">Gourmet Gulf Co LLC</div>
+    <img src="https://i.postimg.cc/9FS3C67D/Black-on-Transparent.png" alt="MusTax AI Logo" class="logo">
+  </div>
+  <div class="content">
+    <section class="title-page">
+      <h1>Gourmet Gulf Co LLC - UAE Corporate Tax Analysis</h1>
+    </section>
+
+    <section id="table-of-contents">
+      <h2>1. Table of Contents</h2>
+      <ol>
+        <li><a href="#executive-summary">2. Executive Summary</a></li>
+        <li><a href="#introduction">3. Introduction</a></li>
+        <li><a href="#detailed-data-analysis">4. Detailed Data Analysis</a>
+          <ol>
+            <li><a href="#financial-performance-highlights">4.1 Financial Performance Highlights</a></li>
+            <li><a href="#statement-of-financial-position-insights">4.2 Statement of Financial Position Insights</a></li>
+            <li><a href="#statement-of-cash-flows-observations">4.3 Statement of Cash Flows Observations</a></li>
+            <li><a href="#key-notes-to-the-financial-statements">4.4 Key Notes to the Financial Statements</a></li>
+          </ol>
+        </li>
+        <li><a href="#uae-corporate-tax-analysis">5. UAE Corporate Tax Analysis</a>
+          <ol>
+            <li><a href="#taxable-person-status">5.1 Taxable Person Status</a></li>
+            <li><a href="#taxable-income-and-rate">5.2 Taxable Income and Rate</a></li>
+            <li><a href="#potential-corporate-tax-adjustments-considerations">5.3 Potential Corporate Tax Adjustments & Considerations</a>
+              <ol>
+                <li><a href="#related-party-transactions">5.3.1 Related Party Transactions</a></li>
+                <li><a href="#depreciation-amortization">5.3.2 Depreciation & Amortization</a></li>
+                <li><a href="#finance-charges">5.3.3 Finance Charges</a></li>
+                <li><a href="#accrued-expenses">5.3.4 Accrued Expenses</a></li>
+                <li><a href="#loss-carry-forward">5.3.5 Loss Carry Forward</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+        <li><a href="#compliance-documentation-recommendations">6. Compliance and Documentation Recommendations</a></li>
+        <li><a href="#conclusion">7. Conclusion</a></li>
+        <li><a href="#disclaimer">8. Disclaimer</a></li>
+      </ol>
+    </section>
+
+    <section id="executive-summary">
+      <h2>2. Executive Summary</h2>
+      <div class="summary">
+        ---SUMMARY---
+        <p>---SUMMARY---This report provides a UAE Corporate Tax analysis for Gourmet Gulf Co LLC for the year ended 31 December 2023. Based on the provided financial statements, Gourmet Gulf Co LLC is likely a Resident Juridical Person and subject to the standard 9% Corporate Tax rate.  The estimated Taxable Income calculation indicates a net loss, resulting in no estimated Corporate Tax Payable. However, potential tax adjustments related to related party transactions, depreciation, finance charges, and accrued expenses should be further investigated to ensure full compliance. Key recommendations include a detailed review of related party transactions, depreciation policies, and finance charges, along with establishing robust documentation practices to support tax positions and ensure ongoing compliance with UAE Corporate Tax Law.---END SUMMARY---</p>
+        ---END SUMMARY---
+      </div>
+    </section>
+
+    <section id="introduction">
+      <h2>3. Introduction</h2>
+      <p>This report presents a detailed analysis of the financial statements of Gourmet Gulf Co LLC for the year ended 31 December 2023, from a UAE Corporate Tax compliance perspective. The analysis aims to provide insights into the company's financial performance and key areas relevant to UAE Corporate Tax, along with actionable recommendations for ensuring compliance and optimizing tax efficiency.</p>
+    </section>
+
+    <section id="detailed-data-analysis">
+      <h2>4. Detailed Data Analysis</h2>
+      <section id="financial-performance-highlights">
+        <h3>4.1 Financial Performance Highlights</h3>
+        <p>The following table summarizes the key financial performance indicators for Gourmet Gulf Co LLC, comparing the year ended 31 December 2023 with the previous year.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Financial Metric</th>
+              <th>2023 (AED)</th>
+              <th>2022 (AED)</th>
+              <th>Trend Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Revenue</td>
+              <td>15,683,005</td>
+              <td>20,387,980</td>
+              <td>Decrease</td>
+            </tr>
+            <tr>
+              <td>Gross Profit</td>
+              <td>12,287,061</td>
+              <td>5,679,672</td>
+              <td>Increase</td>
+            </tr>
+            <tr>
+              <td>Net Profit/(Loss)</td>
+              <td>(4,685,195)</td>
+              <td>(12,847,044)</td>
+              <td>Loss Decrease</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="statement-of-financial-position-insights">
+        <h3>4.2 Statement of Financial Position Insights</h3>
+        <p>The table below provides insights into the Statement of Financial Position, highlighting key changes in assets, liabilities, and equity between 2023 and 2022.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Balance Sheet Item</th>
+              <th>2023 (AED)</th>
+              <th>2022 (AED)</th>
+              <th>Trend Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Property, Plant, and Equipment</td>
+              <td>3,354,818</td>
+              <td>3,196,322</td>
+              <td>Increase</td>
+            </tr>
+            <tr>
+              <td>Right-of-use Asset</td>
+              <td>-</td>
+              <td>1,040,473</td>
+              <td>Decrease/Disposal</td>
+            </tr>
+            <tr>
+              <td>Due from Related Parties</td>
+              <td>10,544,141</td>
+              <td>11,649,573</td>
+              <td>Decrease</td>
+            </tr>
+            <tr>
+              <td>Due to Related Party</td>
+              <td>17,899,689</td>
+              <td>149,578,448</td>
+              <td>Decrease</td>
+            </tr>
+            <tr>
+              <td>Accumulated Losses</td>
+              <td>(55,763,079)</td>
+              <td>(189,175,392)</td>
+              <td>Loss Decrease</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="statement-of-cash-flows-observations">
+        <h3>4.3 Statement of Cash Flows Observations</h3>
+        <p>The following table presents key observations from the Statement of Cash Flows, focusing on the changes in cash flow activities year-over-year.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Cash Flow Category</th>
+              <th>2023 (AED)</th>
+              <th>2022 (AED)</th>
+              <th>Trend Analysis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Net Cash from Operating Activities</td>
+              <td>(138,605,408)</td>
+              <td>32,799,440</td>
+              <td>Significant Decrease</td>
+            </tr>
+            <tr>
+              <td>Net Cash from Investing Activities</td>
+              <td>1,281,832</td>
+              <td>(28,343)</td>
+              <td>Increase</td>
+            </tr>
+            <tr>
+              <td>Net Cash from Financing Activities</td>
+              <td>138,097,508</td>
+              <td>(32,938,628)</td>
+              <td>Significant Increase</td>
+            </tr>
+            <tr>
+              <td>Net (Decrease)/Increase in Cash</td>
+              <td>773,932</td>
+              <td>(167,531)</td>
+              <td>Increase</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="key-notes-to-the-financial-statements">
+        <h3>4.4 Key Notes to the Financial Statements</h3>
+        <p>Critical notes from the financial statements relevant to UAE Corporate Tax include:</p>
+        <ul>
+          <li><b>Note 14: Related Parties' Balances and Transactions:</b> Significant balances and transactions with related parties exist, indicating the need for transfer pricing review and documentation.</li>
+          <li><b>Note 2.4: Use of Going Concern Assumption:</b> The financial statements are prepared using the going concern assumption despite accumulated losses and negative equity, based on shareholder support. This may be relevant for assessing Small Business Relief eligibility.</li>
+          <li><b>Note 2.5: Use of Estimates and Judgments:</b> The financial statements rely on significant estimates and judgments, particularly concerning depreciation and impairment, which are key areas for Corporate Tax adjustments.</li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="uae-corporate-tax-analysis">
+      <h2>5. UAE Corporate Tax Analysis</h2>
+      <section id="taxable-person-status">
+        <h3>5.1 Taxable Person Status</h3>
+        <p>Based on the information available, Gourmet Gulf Co LLC, registered in Dubai, UAE, is considered a <b>Resident Juridical Person</b> under the UAE Corporate Tax Law. This determination is made based on the following:</p>
+        <ul>
+          <li><b>Incorporation in the UAE:</b> Gourmet Gulf Co LLC is registered as a Limited Liability Company in Dubai, United Arab Emirates, satisfying the condition of being incorporated or established in the UAE as per Article 11(3)(a) of the Corporate Tax Law.</li>
+          <li><b>Principal Activity:</b> The company's principal activity is operating a restaurant, which constitutes a Business under the Corporate Tax Law.</li>
+        </ul>
+        <p>As a Resident Juridical Person, Gourmet Gulf Co LLC is subject to UAE Corporate Tax on its worldwide income.</p>
+      </section>
+
+      <section id="taxable-income-and-rate">
+        <h3>5.2 Taxable Income and Rate</h3>
+        <h4>Applicable Corporate Tax Rate</h4>
+        <p>As a standard Taxable Person, Gourmet Gulf Co LLC is subject to the following Corporate Tax rates:</p>
+        <ul>
+          <li><b>0%</b> on Taxable Income up to AED 375,000</li>
+          <li><b>9%</b> on Taxable Income exceeding AED 375,000</li>
+        </ul>
+
+        <h4>Estimated Taxable Income Calculation</h4>
+        <p>The following table provides a step-by-step calculation of the estimated Taxable Income for Gourmet Gulf Co LLC, starting from the Accounting Income (Net Loss) reported in the financial statements.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Particulars</th>
+              <th>Amount (AED)</th>
+              <th>Notes/Adjustments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Accounting Income (Net Loss)</td>
+              <td>(4,685,195)</td>
+              <td>Net loss as per Statement of Comprehensive Income</td>
+            </tr>
+            <tr>
+              <td><b>Estimated Taxable Income</b></td>
+              <td><b>(4,685,195)</b></td>
+              <td>No adjustments identified from the provided financial statements for disallowable expenses or exempt income. Further review may be required.</td>
+            </tr>
+            <tr>
+              <td>Estimated Corporate Tax Payable</td>
+              <td><b>0</b></td>
+              <td>As Taxable Income is a net loss, no Corporate Tax is payable.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Small Business Relief Eligibility</h4>
+        <p>Based on the limited information available, Gourmet Gulf Co LLC's eligibility for Small Business Relief is assessed as follows:</p>
+        <ul>
+          <li><b>Resident Person:</b> Gourmet Gulf Co LLC is a Resident Juridical Person, fulfilling this condition.</li>
+          <li><b>Revenue Threshold:</b> Revenue for the year ended 31 December 2023 is AED 15,683,005, exceeding the AED 3 million threshold.</li>
+        </ul>
+        <p><b>Conclusion:</b> Gourmet Gulf Co LLC is <b>not eligible</b> for Small Business Relief for the Tax Period ending 31 December 2023 as its Revenue exceeds the eligibility threshold.</p>
+      </section>
+
+      <section id="potential-corporate-tax-adjustments-considerations">
+        <h3>5.3 Potential Corporate Tax Adjustments & Considerations</h3>
+        <p>Based on a review of the financial statements, the following areas may require further scrutiny and potential adjustments for UAE Corporate Tax purposes:</p>
+
+        <section id="related-party-transactions">
+          <h4>5.3.1 Related Party Transactions</h4>
+          <p>Note 14 highlights significant balances and transactions with related parties. Under UAE Corporate Tax Law, transactions with related parties must adhere to the Arm's Length Principle. Potential Transfer Pricing risks and considerations include:</p>
+          <ul>
+            <li><b>Significant Related Party Balances:</b> Substantial "Due from related parties" and "Due to a related party" balances may indicate non-arm's length financing arrangements or terms.</li>
+            <li><b>Related Party Transactions - Sales and Direct Expenses:</b> Sales and direct expenses with related parties require detailed review to ensure they are conducted at arm's length.</li>
+          </ul>
+          <p><b>Action Required:</b></p>
+          <ul>
+            <li>Conduct a detailed Transfer Pricing analysis of all material related party transactions, benchmarking against comparable uncontrolled transactions to ensure adherence to the Arm's Length Principle.</li>
+            <li>Prepare robust Transfer Pricing documentation, including functional analysis, economic analysis, and selection of the most appropriate Transfer Pricing method, to support the arm's length nature of related party transactions.</li>
+          </ul>
+        </section>
+
+        <section id="depreciation-amortization">
+          <h4>5.3.2 Depreciation & Amortization</h4>
+          <p>Note 4 indicates significant Property, Plant, and Equipment, while Note 6 refers to Intangible Assets. Review of depreciation and amortization policies is crucial for Corporate Tax compliance.</p>
+          <ul>
+            <li><b>Depreciation Rates and Useful Lives:</b> Verify that depreciation rates and useful lives of assets are in line with UAE Corporate Tax regulations and industry standards.</li>
+            <li><b>Amortization of Intangibles:</b> Confirm the amortization method and period for intangible assets comply with Corporate Tax Law.</li>
+          </ul>
+          <p><b>Action Required:</b></p>
+          <ul>
+            <li>Review the company's depreciation and amortization policies to ensure compliance with UAE Corporate Tax Law.</li>
+            <li>Prepare a fixed asset register and amortization schedule detailing asset classifications, useful lives, depreciation/amortization methods, and calculations.</li>
+          </ul>
+        </section>
+
+        <section id="finance-charges">
+          <h4>5.3.3 Finance Charges</h4>
+          <p>Note 20 shows Finance Charges. Under UAE Corporate Tax Law, deductibility of finance charges may be subject to limitations, particularly the General Interest Deduction Limitation Rule.</p>
+          <ul>
+            <li><b>General Interest Deduction Limitation Rule:</b> Assess applicability of the General Interest Deduction Limitation Rule, especially given the significant finance charges. Calculate the Net Interest Expenditure and compare it against 30% of EBITDA.</li>
+            <li><b>Related Party Interest:</b> If any portion of the finance charges relates to interest paid to related parties, ensure compliance with Specific Interest Deduction Limitation Rules under Article 31 of the Corporate Tax Law.</li>
+          </ul>
+          <p><b>Action Required:</b></p>
+          <ul>
+            <li>Analyze the nature of finance charges and assess the applicability of Interest Deduction Limitation Rules.</li>
+            <li>Prepare detailed calculations and documentation to support the deductibility of finance charges under UAE Corporate Tax Law.</li>
+          </ul>
+        </section>
+
+        <section id="accrued-expenses">
+          <h4>5.3.4 Accrued Expenses</h4>
+          <p>Note 15 details Accrued Expenses and Other Payables. Review of accrued expenses is important to ensure deductibility under Corporate Tax Law.</p>
+          <ul>
+            <li><b>Deductibility of Accrued Expenses:</b> Verify that accrued expenses meet the conditions for deductibility under UAE Corporate Tax Law, i.e., they are incurred wholly and exclusively for the business and are not capital in nature.</li>
+            <li><b>Supporting Documentation:</b> Ensure sufficient documentation exists to support the nature and deductibility of accrued expenses.</li>
+          </ul>
+          <p><b>Action Required:</b></p>
+          <ul>
+            <li>Review the nature of significant accrued expenses and ensure they are deductible under UAE Corporate Tax Law.</li>
+            <li>Maintain adequate documentation to substantiate the deductibility of accrued expenses, including invoices, contracts, and evidence of accrual.</li>
+          </ul>
+        </section>
+
+        <section id="loss-carry-forward">
+          <h4>5.3.5 Loss Carry Forward</h4>
+          <p>Gourmet Gulf Co LLC has significant accumulated losses. As per the Statement of Changes in Equity, accumulated losses as of 31 December 2023 are AED (55,763,079).</p>
+          <ul>
+            <li><b>Loss Carry Forward Rules:</b> Understand the implications of Tax Loss carry forward under UAE Corporate Tax Law. Tax Losses can be carried forward and offset against Taxable Income in future periods, subject to conditions including a 75% of Taxable Income limitation and time limitations.</li>
+            <li><b>Loss Utilization:</b> Track and document Tax Losses to ensure proper utilization in future profitable years, ensuring compliance with carry forward rules and limitations.</li>
+          </ul>
+          <p><b>Action Required:</b></p>
+          <ul>
+            <li>Track and document the Tax Losses carried forward, ensuring compliance with the conditions and limitations for utilization under UAE Corporate Tax Law.</li>
+          </ul>
+        </section>
+      </section>
+    </section>
+
+    <section id="compliance-documentation-recommendations">
+      <h2>6. Compliance and Documentation Recommendations</h2>
+      <ol>
+        <li><b>Transfer Pricing Documentation:</b> Prepare and maintain comprehensive Transfer Pricing documentation for all related party transactions, including a Master File and Local File if thresholds are met, to demonstrate adherence to the Arm's Length Principle.</li>
+        <li><b>Review and Adjust Depreciation & Amortization Policies:</b> Review and adjust depreciation and amortization policies to align with UAE Corporate Tax regulations, ensuring appropriate useful lives and methods are applied.</li>
+        <li><b>Finance Charges Analysis:</b> Conduct a detailed analysis of finance charges, assess applicability of Interest Deduction Limitation Rules, and prepare necessary documentation to support deductibility.</li>
+        <li><b>Accrued Expenses Verification:</b> Thoroughly review and verify the deductibility of accrued expenses, ensuring they are wholly and exclusively for business purposes and maintain supporting documentation.</li>
+        <li><b>Tax Loss Tracking:</b> Implement a system to track and document Tax Losses carried forward, ensuring compliance with utilization rules and time limitations.</li>
+        <li><b>Maintain Comprehensive Documentation:</b> Establish and maintain robust documentation practices for all financial transactions, estimates, and judgments, ensuring readily available information for FTA audits.</li>
+        <li><b>Ongoing Compliance Review:</b> Regularly review financial and operational activities to ensure continuous compliance with UAE Corporate Tax Law and implement necessary adjustments proactively.</li>
+      </ol>
+    </section>
+
+    <section id="conclusion">
+      <h2>7. Conclusion</h2>
+      <p>This analysis indicates that Gourmet Gulf Co LLC, while currently reporting a net loss and therefore no immediate Corporate Tax liability, operates within a complex financial environment requiring careful attention to UAE Corporate Tax compliance. Key areas such as related party transactions and adherence to arm's length principle, depreciation and amortization policies, and deductibility of finance charges and accrued expenses are critical for ensuring accurate Taxable Income determination and compliance. </p>
+      <p>Proactive implementation of the compliance and documentation recommendations outlined in this report is essential for Gourmet Gulf Co LLC to effectively manage its Corporate Tax obligations, mitigate potential risks, and ensure a robust and tax-efficient operational framework in the UAE.</p>
+    </section>
+
+    <section id="disclaimer">
+      <h2>8. Disclaimer</h2>
+      <p>This report is prepared based on the provided financial statements for Gourmet Gulf Co LLC for the year ended 31 December 2023 and general knowledge of UAE Corporate Tax Law. This analysis is for informational purposes only and does not constitute professional tax advice. Gourmet Gulf Co LLC should consult with qualified tax professionals for specific advice tailored to their circumstances.</p>
+    </section>
+  </div>
+  <div class="footer">
+    <div>Confidential - MusTax AI</div>
+    <div class="page-number">Page </div>
+  </div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggleButton = document.getElementById('theme-toggle');
+
+      // Check if user has a theme preference in localStorage
+      const userTheme = localStorage.getItem('report-theme');
+
+      // Check system preference for dark mode
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      // Apply dark mode if user has set it or if system prefers dark
+      if (userTheme === 'dark' || (userTheme === null && systemPrefersDark)) {
+        document.body.classList.add('dark-mode-report');
+      }
+
+      // Add click event listener to toggle button
+      toggleButton.addEventListener('click', function() {
+        const isDark = document.body.classList.contains('dark-mode-report');
+
+        if (isDark) {
+          document.body.classList.remove('dark-mode-report');
+          localStorage.setItem('report-theme', 'light');
+        } else {
+          document.body.classList.add('dark-mode-report');
+          localStorage.setItem('report-theme', 'dark');
+        }
+      });
+    });
+  </script>
+
+<style>
+.dark-mode-report body {
+  background-color: #1E1E1E !important;
+  color: #FFFFFF !important;
+}
+
+.dark-mode-report .header {
+  background-color: #1E3A8A !important;
+  color: #FFFFFF !important;
+}
+
+.dark-mode-report .footer {
+  background-color: #1E3A8A !important;
+  color: #FFFFFF !important;
+}
+
+.dark-mode-report .content {
+  background-color: #262626 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dark-mode-report h1, 
+.dark-mode-report h2, 
+.dark-mode-report h3 {
+  color: #2DD4BF !important;
+}
+
+.dark-mode-report table {
+  border-color: #374151 !important;
+}
+
+.dark-mode-report th {
+  background-color: #374151 !important;
+  color: #FFFFFF !important;
+}
+
+.dark-mode-report td {
+  border-color: #374151 !important;
+  color: #FFFFFF !important;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1E3A8A;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: #2DD4BF;
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+</style>
+
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="sun">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('theme-toggle');
+    
+    // Check if user has a theme preference in localStorage
+    const userTheme = localStorage.getItem('report-theme');
+    
+    // Check system preference for dark mode
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Apply dark mode if user has set it or if system prefers dark
+    if (userTheme === 'dark' || (userTheme === null && systemPrefersDark)) {
+      document.body.classList.add('dark-mode-report');
+    }
+    
+    // Add click event listener to toggle button
+    toggleButton.addEventListener('click', function() {
+      const isDark = document.body.classList.contains('dark-mode-report');
+      
+      if (isDark) {
+        document.body.classList.remove('dark-mode-report');
+        localStorage.setItem('report-theme', 'light');
+      } else {
+        document.body.classList.add('dark-mode-report');
+        localStorage.setItem('report-theme', 'dark');
+      }
+    });
+  });
+</script>
+</body>
+</html>

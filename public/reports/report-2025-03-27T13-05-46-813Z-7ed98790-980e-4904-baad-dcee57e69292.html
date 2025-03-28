@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Analysis Report - GOURMET GULF CO.LLC</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 25mm;
+        }
+        body {
+            width: 160mm;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30mm;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 5mm;
+        }
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20mm;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 5mm;
+            font-size: 12px;
+        }
+        .footer::after {
+            content: "Page " counter(page);
+        }
+        .content {
+            margin-top: 35mm;
+            margin-bottom: 25mm;
+            padding: 0 5mm;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10mm;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 3mm;
+            text-align: left;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        th {
+            background-color: #e0e0e0;
+        }
+        tr {
+            page-break-inside: avoid;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GOURMET GULF CO.LLC</h1>
+        <p>Financial Analysis Report - Year Ended 31 December 2023</p>
+    </div>
+    <div class="content">
+        <h2>Executive Summary</h2>
+        <p>GOURMET GULF CO.LLC reported a net loss of AED 4,685,195 for the year ended 31 December 2023, an improvement compared to the net loss of AED 12,847,044 in 2022.  The company's accumulated losses have significantly decreased due to a reduction in 'Due to related parties' balance, and a considerable movement within the accumulated loss. The company operates in the restaurant business in Dubai, UAE, and is subject to UAE Corporate Tax, effective from June 2023.</p>
+
+        <h2>Financial Data Extraction</h2>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>2023 (AED)</th>
+                <th>2022 (AED)</th>
+            </tr>
+            <tr>
+                <td>Revenue</td>
+                <td>15,683,005</td>
+                <td>20,387,980</td>
+            </tr>
+            <tr>
+                <td>Cost of Revenue</td>
+                <td>3,395,944</td>
+                <td>14,708,308</td>
+            </tr>
+            <tr>
+                <td>Gross Profit</td>
+                <td>12,287,061</td>
+                <td>5,679,672</td>
+            </tr>
+             <tr>
+                <td>Administrative and general expenses</td>
+                <td>16,695,988</td>
+                <td>17,781,599</td>
+            </tr>
+            <tr>
+                <td>Operating loss for the year/period</td>
+                <td>4,408,927</td>
+                <td>12,101,927</td>
+            </tr>
+            <tr>
+                <td>Other Income</td>
+                <td>153,998</td>
+                <td>0</td>
+            </tr>
+             <tr>
+                <td>Finance charges</td>
+                <td>430,266</td>
+                <td>745,117</td>
+            </tr>
+            <tr>
+                <td>Net Loss</td>
+                <td>4,685,195</td>
+                <td>12,847,044</td>
+            </tr>
+            <tr>
+                <td>Total Assets</td>
+                <td>26,703,481</td>
+                <td>29,506,038</td>
+            </tr>
+            <tr>
+                <td>Total Equity</td>
+                <td>(1,745,445)</td>
+                <td>(135,157,758)</td>
+            </tr>
+            <tr>
+                <td>Total Liabilities</td>
+                <td>28,448,926</td>
+                <td>164,663,796</td>
+            </tr>
+              <tr>
+                <td>Property, plant and equipment (Net Book Value)</td>
+                <td>3,354,818</td>
+                <td>3,196,322</td>
+            </tr>
+              <tr>
+                <td>Depreciation (Property, plant, and equipment)</td>
+                <td>1,667,572</td>
+                <td>Not explicitly stated, calculated below.</td>
+            </tr>
+            <tr>
+                <td>Intangible Asset (Net Book Value)</td>
+                <td>160,040</td>
+                <td>584,895</td>
+            </tr>
+           <tr>
+                <td>Amortization on Intangible Asset - software</td>
+                <td>662,110</td>
+                <td>Depreciation and Disposal amounts unclear</td>
+            </tr>
+            <tr>
+                <td>Finance cost (Interest Expense)</td>
+                <td>507,917</td>
+                <td>Not explicitly stated, but Finance Charges were 745,117</td>
+            </tr>
+            <tr>
+                <td>Trade Payables</td>
+                <td>7,169,563</td>
+                <td>8,128,465</td>
+            </tr>
+             <tr>
+                 <td>Due to a related party</td>
+                <td>17,899,689</td>
+                <td>149,578,448</td>
+            </tr>
+            <tr>
+                <td>Inventory</td>
+                <td>640,414</td>
+                <td>707,013</td>
+             </tr>
+             <tr>
+                <td>Trade Receivables</td>
+                <td>278,640</td>
+                <td>295,429</td>
+             </tr>
+             <tr>
+                <td>Due from Related Parties</td>
+                <td>10,544,141</td>
+                <td>11,649,573</td>
+            </tr>
+        </table>
+
+        <h2>Tax Calculation</h2>
+
+        <p><strong>Assumptions and Clarifications:</strong></p>
+         <ul>
+            <li><strong>UAE Corporate Tax:</strong> Since the company is based in Dubai, UAE, the UAE Corporate Tax Law (Federal Decree-Law No. 47 of 2022) applies, effective for financial years starting on or after 1 June 2023.</li>
+            <li><strong>Tax Rate:</strong>
+                <ul>
+                  <li>0% on taxable income up to AED 375,000.</li>
+                  <li>9% on taxable income exceeding AED 375,000.</li>
+                </ul>
+            </li>
+             <li><strong>Depreciation (2022):</strong>The 2022 depreciation is not stated, but can be back-calculated based on the difference in net book value, considering the additions and disposals. 3,196,322 (2022 NBV)- 27,405,529 (2023 Cost) + 28,348 (additions) + 204,693(Disposals) = 1,667,572.</li>
+               <li><strong>Amortization (2022):</strong> The 2022 amortization for the intangible asset is stated as AED 662,110.</li>
+               <li><strong>Related Party Transactions.</strong> Significant balances and transactions exist with related parties. These require careful review to ensure they comply with the arm's length principle as required by UAE Corporate Tax Law (Article 34).</li>
+        </ul>
+
+        <p><strong>Step-by-Step Corporate Tax Calculation (2023):</strong></p>
+        <ol>
+            <li><strong>Accounting Net Loss:</strong> AED (4,685,195)</li>
+            <li><strong>Add back non-deductible expenses:</strong>
+                <ul>
+                    <li>There is mention of potential non-deductible expenses related to related party transactions. However, without further details on specific transactions and whether they meet the arm's length principle, we can't make a precise adjustment. It is recommended to check this point.</li>
+                </ul>
+            </li>
+            <li><strong>Adjust for Exempt Income:</strong> None based on the information provided.</li>
+           <li><strong>Adjust for Reliefs:</strong> None based on the available data.</li>
+            <li><strong>Preliminary Taxable Income:</strong> AED (4,685,195)</li>
+            <li><strong>Tax Loss Carryforward:</strong> The company has accumulated losses. However, given there is a loss for 2023, the losses will increase.</li>
+           <li><strong>Taxable Income:</strong> AED (4,685,195). Since the result is negative, there is no taxable profit for the year.</li>
+          <li><strong>Corporate Tax Liability:</strong> AED 0. Since the company made losses, there would be no tax payable in this period.</li>
+        </ol>
+
+        <h2>Analysis and Recommendations</h2>
+        <ul>
+            <li><strong>Significant Net Loss:</strong> The company is still incurring a net loss, though it's significantly reduced compared to 2022.  The primary drivers for the improved, but still negative, performance need to be identified (reduced cost of revenue, lower adminsitrative expenses, etc.) and sustained.</li>
+            <li><strong>Related Party Transactions Review:</strong>  The high balances "Due from Related Parties" (AED 10,544,141) and "Due to a Related Party" (AED 17,899,689), along with the significant transactions noted in the cash flow statement, require *immediate* and thorough review.  These must be evaluated under the arm's length principle. Documentation supporting the pricing and terms of these transactions is crucial.  If these transactions are not at arm's length, adjustments will be required for Corporate Tax purposes, potentially leading to a significantly different tax outcome.  Professional advice is strongly recommended here.</li>
+             <li><strong>Cost Control:</strong> While cost of revenue has decreased significantly, administrative and general expenses, while lower than the previous year, remain high relative to revenue. A detailed review of these expenses is recommended to identify further cost-saving opportunities. Specific areas to examine could include salaries and benefits, rent, and office overhead.</li>
+             <li><strong>Revenue Generation:</strong> The decrease in revenue from 2022 to 2023 is a major concern. A comprehensive analysis of sales trends, customer behavior, and market conditions is critical to develop strategies to increase revenue.</li>
+            <li><strong>Depreciation and Amortization Review:</strong> Ensure that depreciation and amortization are calculated correctly and in accordance with the applicable accounting standards (IFRS) and UAE Corporate Tax Law. We assumed a straight-line method for depreciation, and it's crucial to verify this with company policy.</li>
+            <li><strong>Tax Loss Carryforward:</strong> Although there's no immediate tax liability due to the loss, the accumulated losses can be carried forward to offset future taxable income, subject to specific conditions under UAE Corporate Tax Law. Proper documentation of these losses is essential.</li>
+           <li><strong>VAT Payable.</strong> There is a VAT payable balance of AED 35,264, the company should ensure prompt payment to avoid any penalties.</li>
+            <li><strong>Documentation.</strong> Ensure all financial records, including those related to related party transactions, are well-maintained and readily available for review by the FTA if needed.</li>
+
+        </ul>
+
+        <h2>Limitations</h2>
+        <p>This analysis is based solely on the provided financial statements and notes. A complete tax and financial review would require access to more detailed records, including:</p>
+        <ul>
+            <li>Detailed breakdown of administrative and general expenses.</li>
+            <li>Contracts and agreements related to related party transactions.</li>
+            <li>Depreciation and amortization schedules.</li>
+            <li>Details of "Other Income".</li>
+            <li>Details of "Accrued expenses and other payables".</li>
+            <li>Documentation supporting the arm's length nature of related party transactions.</li>
+            <li>Information of the nature of business for "Due from related parties" and "Due to related parties.".</li>
+        </ul>
+        <p>Assumptions were made regarding the depreciation method and the deductibility of certain expenses, which need to be confirmed.</p>
+    </div>
+    <div class="footer">
+        <p>Confidential | Generated by MusTax AI | This analysis is for informational purposes only and should be verified by a qualified tax professional.</p>
+    </div>
+</body>
+</html>
+

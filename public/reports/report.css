@@ -1,0 +1,248 @@
+/* Report Print Styles */
+:root {
+  --primary: #1E3A8A; /* Deep Blue for primary actions and branding */
+  --secondary: #D1D5DB; /* Light Gray for secondary elements */
+  --accent: #2DD4BF; /* Teal for highlights and focus states */
+  --text: #374151; /* Charcoal for readable text */
+  --success: #10B981; /* Green for success messages */
+  --warning: #EF4444; /* Red for errors and warnings */
+  --white: #FFFFFF; /* Backgrounds and light text */
+  --light-gray: #E5E7EB; /* Borders and subtle backgrounds */
+  --black: #000000; /* Fallback or report-specific use */
+}
+
+/* Base Styles */
+body {
+  font-family: "SF Pro", "Inter", "Helvetica", sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--white);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20mm;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25mm;
+}
+
+header .company-name {
+  font-weight: 700;
+  font-size: 12pt;
+  color: var(--text);
+}
+
+header .logo {
+  height: 10mm;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15mm;
+  background-color: var(--white);
+  border-top: 1px solid var(--light-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25mm;
+  font-size: 9pt;
+  color: var(--text);
+}
+
+footer .confidentiality {
+  font-style: italic;
+}
+
+footer .page-number::after {
+  content: "Page " counter(page) " of " counter(pages);
+}
+
+/* Main Content */
+.content {
+  margin-top: 25mm;
+  margin-bottom: 20mm;
+  padding: 0 25mm;
+}
+
+/* First Page Title */
+.report-title {
+  font-size: 18pt;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 12pt;
+  text-align: center;
+}
+
+.report-subtitle {
+  font-size: 14pt;
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 24pt;
+  text-align: center;
+}
+
+/* Table of Contents */
+.toc {
+  margin: 20pt 0 30pt;
+  page-break-after: always;
+}
+
+.toc-title {
+  font-size: 16pt;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 12pt;
+}
+
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dotted var(--light-gray);
+  margin-bottom: 6pt;
+  padding-bottom: 3pt;
+}
+
+.toc-item span:first-child {
+  font-weight: 400;
+}
+
+/* Headings */
+h1 {
+  font-size: 16pt;
+  color: var(--primary);
+  font-weight: 700;
+  margin-top: 24pt;
+  margin-bottom: 12pt;
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size: 14pt;
+  color: var(--primary);
+  font-weight: 700;
+  margin-top: 18pt;
+  margin-bottom: 9pt;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 12pt;
+  color: var(--primary);
+  font-weight: 700;
+  margin-top: 12pt;
+  margin-bottom: 6pt;
+  page-break-after: avoid;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12pt 0;
+  page-break-inside: avoid;
+}
+
+th {
+  background-color: var(--light-gray);
+  color: var(--text);
+  font-weight: 700;
+  text-align: left;
+  padding: 6pt;
+  border: 1px solid var(--text);
+}
+
+td {
+  padding: 6pt;
+  border: 1px solid var(--text);
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* Summary Boxes */
+.summary-box {
+  background-color: rgba(45, 212, 191, 0.1);
+  border-left: 4pt solid var(--accent);
+  padding: 10pt;
+  margin: 12pt 0;
+  page-break-inside: avoid;
+}
+
+.warning-box {
+  background-color: rgba(239, 68, 68, 0.1);
+  border-left: 4pt solid var(--warning);
+  padding: 10pt;
+  margin: 12pt 0;
+  page-break-inside: avoid;
+}
+
+.info-box {
+  background-color: rgba(30, 58, 138, 0.1);
+  border-left: 4pt solid var(--primary);
+  padding: 10pt;
+  margin: 12pt 0;
+  page-break-inside: avoid;
+}
+
+/* Print Settings */
+@page {
+  size: A4;
+  margin: 25mm 25mm 25mm 25mm;
+}
+
+@media print {
+  a {
+    text-decoration: none;
+    color: var(--primary);
+  }
+  
+  .no-print {
+    display: none;
+  }
+  
+  /* Avoid page breaks inside paragraphs */
+  p {
+    page-break-inside: avoid;
+  }
+  
+  /* Ensure headings don't appear at the bottom of the page */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  /* Force page breaks where needed */
+  .page-break-before {
+    page-break-before: always;
+  }
+  
+  .page-break-after {
+    page-break-after: always;
+  }
+  
+  /* Hide report title on all but first page */
+  .report-title, .report-subtitle {
+    display: none;
+  }
+  
+  :first-of-type .report-title,
+  :first-of-type .report-subtitle {
+    display: block;
+  }
+} 

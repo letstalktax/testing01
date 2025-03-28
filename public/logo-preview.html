@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MusTax AI Logo Preview</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .logo-container {
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+        .dark {
+            background: #000033;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+        p {
+            text-align: center;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>MusTax AI Logo Preview</h1>
+    
+    <div class="logo-container">
+        <img src="data:image/png;base64,YOUR_NAVY_LOGO_BASE64" alt="Navy Logo">
+        <p>Navy Logo (for light mode)</p>
+    </div>
+    
+    <div class="logo-container dark">
+        <img src="data:image/png;base64,YOUR_WHITE_LOGO_BASE64" alt="White Logo">
+        <p style="color: white">White Logo (for dark mode)</p>
+    </div>
+    
+    <p>Right-click each logo and select "Save Image As..." to save them as:</p>
+    <ul>
+        <li>public/images/logo-navy.png</li>
+        <li>public/images/logo-white.png</li>
+    </ul>
+</body>
+</html> 

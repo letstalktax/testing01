@@ -1,0 +1,59 @@
+# UAE Corporate Tax Overview
+
+The United Arab Emirates (UAE) introduced Corporate Tax (CT) with Federal Decree-Law No. 47 of 2022, which came into effect for financial years starting on or after June 1, 2023. This document provides a brief overview of key aspects of the UAE CT regime.
+
+## Tax Rates
+
+- Standard rate: 9% for taxable income exceeding AED 375,000
+- 0% rate for taxable income up to AED 375,000 (small business relief)
+- 0% rate for qualifying Free Zone Persons meeting certain conditions
+- Different rates may apply to certain sectors (e.g., extraction of natural resources)
+
+## Taxable Persons
+
+The following are considered taxable persons under UAE CT:
+- UAE companies and other legal persons incorporated in the UAE
+- Foreign companies and other legal persons that have a permanent establishment in the UAE
+- Natural persons (individuals) who conduct business or business activities in the UAE as specified in a Cabinet Decision
+
+## Exempt Persons
+
+The following entities are exempt from UAE CT:
+- Government entities
+- Government-controlled entities (as specified in a Cabinet Decision)
+- Extractive businesses (subject to Emirate-level taxation)
+- Non-extractive natural resource businesses (subject to Emirate-level taxation)
+- Public benefit entities (subject to Cabinet Decision)
+- Investment funds (subject to conditions)
+- Public or private pension or social security funds
+
+## Tax Base
+
+The tax base for UAE CT is the accounting net profit (or loss) of the business, adjusted for certain items as specified in the CT Law and its implementing decisions.
+
+## Tax Groups
+
+UAE resident group companies can form a Tax Group and be treated as a single taxable person if:
+- The parent company holds at least 95% of the share capital and voting rights of its subsidiaries
+- None of the companies is an exempt person or a qualifying Free Zone Person
+- All companies have the same financial year
+- All companies prepare their financial statements using the same accounting standards
+
+## Free Zone Persons
+
+Qualifying Free Zone Persons can benefit from a 0% CT rate on their "qualifying income" and a 9% rate on their "taxable income" that does not meet the qualifying income definition.
+
+## Transfer Pricing
+
+The UAE CT regime includes transfer pricing rules based on OECD Transfer Pricing Guidelines. Related parties and connected persons must comply with the arm's length principle for their transactions and arrangements.
+
+## Compliance Requirements
+
+- Registration for CT purposes
+- Filing annual CT returns
+- Maintaining financial and other records for a specified period
+- Notification of certain events or transactions
+
+## Effective Date
+
+The UAE CT regime applies for financial years starting on or after June 1, 2023. 
