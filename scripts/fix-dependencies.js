@@ -62,10 +62,11 @@ export { Badge, badgeVariants }`;
 const tabsPath = path.join(process.cwd(), 'components', 'ui', 'tabs.tsx');
 if (fs.existsSync(tabsPath)) {
   let tabsContent = fs.readFileSync(tabsPath, 'utf8');
-  if (tabsContent.includes('@radix-ui/tabs') && !tabsContent.includes('@radix-ui/react-tabs')) {
+  // Make sure we're replacing both potential variations of the import
+  if (tabsContent.includes('@radix-ui/tabs')) {
     tabsContent = tabsContent.replace('@radix-ui/tabs', '@radix-ui/react-tabs');
     fs.writeFileSync(tabsPath, tabsContent);
-    console.log('Fixed tabs component imports');
+    console.log('Fixed tabs component imports to use @radix-ui/react-tabs');
   }
 }
 
