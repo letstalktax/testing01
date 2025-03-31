@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 export const BotIcon = () => {
   return (
@@ -1220,4 +1221,8 @@ export const LogoMusTax = ({ className = '', size = 120 }: { className?: string;
       />
     </div>
   );
+};
+
+export const Icons = {
+  spinner: Loader2,
 };

@@ -2,76 +2,69 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useActionState, useEffect, useState } from 'react';
-
-import { AuthForm } from '@/components/auth-form';
-import { SubmitButton } from '@/components/submit-button';
-import { LogoMusTax } from '@/components/icons';
+import { useState } from 'react';
 import { toast } from '@/components/toast';
-
-import { register, type RegisterActionState } from '../actions';
+import { AuthForm } from '@/components/auth-form';
+import { APP_NAME, APP_DESCRIPTION } from '@/lib/constants';
+import { LogoMusTax } from '@/components/icons';
+import { useAuth } from '@/lib/firebase/auth-context';
 
 export default function Page() {
   const router = useRouter();
-
+  const { signUp } = useAuth();
   const [email, setEmail] = useState('');
-  const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [state, formAction] = useActionState<RegisterActionState, FormData>(
-    register,
-    {
-      status: 'idle',
-    },
-  );
-
-  useEffect(() => {
-    if (state.status === 'user_exists') {
-      toast({ type: 'error', description: 'Account already exists!' });
-    } else if (state.status === 'failed') {
-      toast({ type: 'error', description: 'Failed to create account!' });
-    } else if (state.status === 'invalid_data') {
+  const handleSubmit = async (formData: FormData) => {
+    try {
+      setIsLoading(true);
+      const email = formData.get('email') as string;
+      const password = formData.get('password') as string;
+      
+      await signUp(email, password);
+      setEmail(email);
+      toast({
+        type: 'success',
+        description: 'Account created successfully!',
+      });
+      router.refresh();
+      router.push('/');
+    } catch (error: any) {
       toast({
         type: 'error',
-        description: 'Failed validating your submission!',
+        description: error.message || 'Failed to create account!',
       });
-    } else if (state.status === 'success') {
-      toast({ type: 'success', description: 'Account created successfully!' });
-
-      setIsSuccessful(true);
-      router.refresh();
+    } finally {
+      setIsLoading(false);
     }
-  }, [state, router]);
-
-  const handleSubmit = (formData: FormData) => {
-    setEmail(formData.get('email') as string);
-    formAction(formData);
   };
 
   return (
-    <div className="flex h-dvh w-screen items-start pt-12 md:pt-0 md:items-center justify-center bg-background">
-      <div className="w-full max-w-md overflow-hidden rounded-2xl gap-12 flex flex-col">
-        <div className="flex flex-col items-center justify-center gap-2 px-4 text-center sm:px-16">
-          <div className="w-48 h-20 mb-4">
-            <LogoMusTax size={180} />
-          </div>
-          <h3 className="text-xl font-semibold dark:text-zinc-50">Sign Up</h3>
-          <p className="text-sm text-gray-500 dark:text-zinc-400">
-            Create an account with your email and password
+    <div className="container relative flex h-screen flex-col items-center justify-center">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <div className="flex flex-col space-y-2 text-center">
+          <LogoMusTax className="mx-auto h-6 w-6" />
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Create an account
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Enter your email below to create your account
           </p>
         </div>
-        <AuthForm action={handleSubmit} defaultEmail={email}>
-          <SubmitButton isSuccessful={isSuccessful}>Sign Up</SubmitButton>
-          <p className="text-center text-sm text-gray-600 mt-4 dark:text-zinc-400">
-            {'Already have an account? '}
-            <Link
-              href="/login"
-              className="font-semibold text-[#0F4C81] hover:underline"
-            >
-              Sign in
-            </Link>
-            {' instead.'}
-          </p>
-        </AuthForm>
+        <AuthForm
+          type="register"
+          onSubmit={handleSubmit}
+          isLoading={isLoading}
+          defaultEmail={email}
+        />
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          <Link
+            href="/login"
+            className="hover:text-brand underline underline-offset-4"
+          >
+            Already have an account? Sign In
+          </Link>
+        </p>
       </div>
     </div>
   );
