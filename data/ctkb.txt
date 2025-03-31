@@ -1,0 +1,63 @@
+UAE CORPORATE TAX KNOWLEDGE BASE
+
+GENERAL INFORMATION:
+- The UAE Corporate Tax (CT) was introduced effective for financial years starting on or after June 1, 2023.
+- The standard corporate tax rate is 9% for taxable income exceeding AED 375,000.
+- Small businesses with revenue below AED 3 million may be eligible for the small business relief.
+- A 0% rate applies to taxable income up to AED 375,000 (designed to support small businesses and startups).
+- A different tax rate of 0% applies to qualifying Free Zone Persons that meet specific requirements.
+
+TAXABLE PERSONS:
+- UAE companies and other legal persons incorporated in the UAE
+- Foreign legal entities that have a permanent establishment in the UAE
+- Natural persons (individuals) who conduct business or business activities in the UAE
+- Non-resident legal entities that have a permanent establishment in the UAE or derive UAE-sourced income
+
+EXEMPT ENTITIES:
+- Government entities and government-controlled entities
+- Extractive businesses (subject to existing Emirates-level taxation)
+- Non-extractive natural resource businesses (subject to Emirates-level taxation)
+- Public benefit entities (charities, etc.) included on an approved list
+- Public or private pension and social security funds
+- Investment funds meeting certain conditions
+
+FREE ZONE ENTITIES:
+- Qualifying Free Zone Persons can benefit from a 0% Corporate Tax rate on qualifying income
+- Must maintain substance and comply with regulatory requirements
+- Must not have a permanent establishment in mainland UAE
+- Must file a corporate tax return annually
+- Non-qualifying income is subject to the standard corporate tax rate of 9%
+
+TAX GROUPS:
+- UAE resident groups can form a tax group if:
+  * One or more companies are directly or indirectly owned by a parent company by at least 95%
+  * Neither the parent nor subsidiaries are exempt or subject to a 0% rate as a Free Zone Person
+  * All companies have the same financial year end
+  * All companies prepare their financial statements using the same accounting standards
+
+EXEMPT INCOME:
+- Dividends and other profit distributions received from UAE legal persons
+- Dividends and other profit distributions received from foreign legal persons where the UAE company holds at least 5% of the shares
+- Capital gains and other income from qualifying shareholdings in UAE and foreign companies
+- Income from a foreign branch or permanent establishment if certain conditions are met
+- Foreign branch profits that have been subject to foreign tax
+
+EXPENSES & DEDUCTIONS:
+- Business expenses are generally deductible if they are:
+  * Incurred wholly and exclusively for business purposes
+  * Not specifically disallowed under the Corporate Tax Law
+  * Properly documented
+- Interest deduction limitations apply based on a percentage of EBITDA
+- Losses can be carried forward indefinitely but can only offset up to 75% of taxable income in any given year
+
+TRANSFER PRICING:
+- Related party transactions must be at arm's length
+- Documentation requirements include maintaining information on related party transactions
+- The UAE Federal Tax Authority (FTA) may adjust pricing if not at arm's length
+
+COMPLIANCE:
+- Corporate tax returns must be filed within 9 months from the end of the relevant tax period
+- Tax periods generally align with the financial year
+- Taxable persons must register for corporate tax and obtain a tax registration number
+- Advanced tax returns may be required for some businesses
+- Penalties apply for non-compliance, including late filing, non-filing, and incorrect filings 

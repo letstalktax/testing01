@@ -72,6 +72,8 @@ function PureMultimodalInput({
 }) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const previousAttachmentsRef = useRef<Attachment[]>(attachments);
+  const previousManagedAttachmentsRef = useRef<Attachment[]>([]);
 
   // Use our custom hook for attachment management
   const {
@@ -89,44 +91,23 @@ function PureMultimodalInput({
     onDocumentProcessed,
   });
 
-  // Sync attachments with the parent component - but avoid infinite loops
+  // Sync parent attachments to managed attachments, but only when they've changed
   useEffect(() => {
-    // Only update managed attachments if they're different from the current attachments
-    // This prevents the circular dependency
-    const areAttachmentsDifferent = 
-      attachments.length !== managedAttachments.length ||
-      attachments.some((att, i) => 
-        !managedAttachments[i] || 
-        att.name !== managedAttachments[i].name || 
-        att.url !== managedAttachments[i].url
-      );
-    
-    if (areAttachmentsDifferent) {
-      setManagedAttachments(attachments);
+    if (!equal(attachments, previousAttachmentsRef.current)) {
+      previousAttachmentsRef.current = attachments;
+      if (!equal(attachments, managedAttachments)) {
+        setManagedAttachments(attachments);
+      }
     }
   }, [attachments, managedAttachments, setManagedAttachments]);
 
-  // Only update parent attachments when managed attachments change from internal actions
-  // not from the sync effect above
-  const initialSyncRef = useRef(true);
+  // Sync managed attachments to parent attachments, but only when they've changed
   useEffect(() => {
-    // Skip the first render to avoid initial sync issues
-    if (initialSyncRef.current) {
-      initialSyncRef.current = false;
-      return;
-    }
-    
-    // Only update if the arrays are actually different
-    const areAttachmentsDifferent = 
-      managedAttachments.length !== attachments.length ||
-      managedAttachments.some((att, i) => 
-        !attachments[i] || 
-        att.name !== attachments[i].name || 
-        att.url !== attachments[i].url
-      );
-    
-    if (areAttachmentsDifferent) {
-      setAttachments(managedAttachments);
+    if (!equal(managedAttachments, previousManagedAttachmentsRef.current)) {
+      previousManagedAttachmentsRef.current = managedAttachments;
+      if (!equal(managedAttachments, attachments)) {
+        setAttachments(managedAttachments);
+      }
     }
   }, [managedAttachments, attachments, setAttachments]);
 
@@ -212,7 +193,7 @@ function PureMultimodalInput({
           {processedDocuments.map((doc) => (
             <div 
               key={`processed-${doc.name}`} 
-              className={`transition-all duration-300 ${(doc as any).isRemoving ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+              className={`transition-all duration-300 ${doc.isRemoving ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
             >
               <PreviewAttachment
                 attachment={doc}
@@ -295,7 +276,6 @@ export const MultimodalInput = memo(
     if (prevProps.input !== nextProps.input) return false;
     if (prevProps.isLoading !== nextProps.isLoading) return false;
     if (!equal(prevProps.attachments, nextProps.attachments)) return false;
-
     return true;
   },
 );

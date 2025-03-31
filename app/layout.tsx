@@ -3,6 +3,7 @@ import { Toaster } from 'sonner';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import { AuthProvider } from '@/lib/firebase/auth-context';
+import { FirebaseInitializer } from '@/lib/firebase/firebase-init';
 
 import './globals.css';
 
@@ -66,10 +67,12 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <AuthProvider>
-            <Toaster position="top-center" />
-            {children}
-          </AuthProvider>
+          <FirebaseInitializer>
+            <AuthProvider>
+              <Toaster position="top-center" />
+              {children}
+            </AuthProvider>
+          </FirebaseInitializer>
         </ThemeProvider>
       </body>
     </html>

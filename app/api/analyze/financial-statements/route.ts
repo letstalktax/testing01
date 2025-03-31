@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { analyzeWithGemini } from '@/lib/gemini-client';
+import { analyzeFinancialStatements } from '@/lib/gemini-client';
 import { auth } from '@/lib/firebase/config';
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -53,8 +53,8 @@ export async function POST(request: NextRequest) {
     // The URL path to access the file
     const fileUrl = `/uploads/${savedFileName}`;
     
-    // Analyze the document using Gemini
-    const analysisResult = await analyzeWithGemini(
+    // Analyze the financial statements using Gemini
+    const analysisResult = await analyzeFinancialStatements(
       fileName,
       fileBuffer,
       fileType
@@ -63,20 +63,29 @@ export async function POST(request: NextRequest) {
     // Generate a unique report ID
     const reportId = uuidv4();
     
+    // Create reports directory if it doesn't exist
+    const reportsDir = path.join(process.cwd(), 'public', 'reports');
+    await fs.mkdir(reportsDir, { recursive: true });
+    
+    // Save the report with the unique ID
+    const reportFileName = `${reportId}.html`;
+    const reportFilePath = path.join(reportsDir, reportFileName);
+    await fs.writeFile(reportFilePath, analysisResult.html);
+    
     return NextResponse.json({
       success: true,
-      message: `Document ${fileName} analyzed successfully`,
+      message: `Financial statements ${fileName} analyzed successfully`,
       documentPreview: fileUrl, // URL to the saved file
       knowledgeBasePreview: 'Used UAE Corporate Tax knowledge base',
       htmlReport: analysisResult.html,
       summary: analysisResult.summary,
-      reportUrl: `/reports/${reportId}`
+      reportUrl: `/reports/${reportFileName}`
     });
   } catch (error) {
-    console.error('Error in document analysis API:', error);
+    console.error('Error in financial statements analysis API:', error);
     return NextResponse.json(
       { 
-        error: 'Failed to analyze document',
+        error: 'Failed to analyze financial statements',
         details: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
