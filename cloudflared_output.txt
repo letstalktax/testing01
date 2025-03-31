@@ -3673,3 +3673,7 @@
 2025-03-31T08:00:56Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.67
 2025-03-31T08:00:56Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.67
 2025-03-31T08:01:16Z ERR Connection terminated error="context canceled" connIndex=0
+2025-03-31T08:29:24Z INF Using [CurveID(4588) CurveID(25497) CurveP256] as curve preferences connIndex=0 event=0 ip=198.41.192.67
+2025-03-31T08:29:25Z ERR Failed to serve tunnel connection error="context canceled" connIndex=0 event=0 ip=198.41.192.67
+2025-03-31T08:29:25Z INF Retrying connection in up to 1m4s connIndex=0 event=0 ip=198.41.192.67
+2025-03-31T08:29:36Z ERR Connection terminated error="context canceled" connIndex=0

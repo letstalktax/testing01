@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { auth } from '@/app/(auth)/auth';
 import { processDocument } from '@/lib/rag/document-processor';
-import { storeEmbeddings, deleteEmbeddings } from '@/lib/rag/pinecone-client';
+import { storeEmbeddings, deleteNamespaceEmbeddings } from '@/lib/rag/pinecone-client';
 import { nanoid } from 'nanoid';
 
 // Check if user is an admin
@@ -49,13 +49,13 @@ export async function POST(request: Request) {
     // Store in Pinecone - using a global namespace for all tax knowledge
     await storeEmbeddings(
       process.env.PINECONE_INDEX_NAME!,
-      'tax-knowledge-base',
       embeddingResults.map(result => ({
         id: result.id,
         text: result.text,
         embedding: result.embedding,
         metadata: result.metadata
-      }))
+      })),
+      'tax-knowledge-base'
     );
     
     // Log the upload in your admin activity log if needed
@@ -93,10 +93,9 @@ export async function DELETE(request: Request) {
     }
     
     // Delete from Pinecone
-    await deleteEmbeddings(
+    await deleteNamespaceEmbeddings(
       process.env.PINECONE_INDEX_NAME!,
-      'tax-knowledge-base',
-      { documentId: { $eq: documentId } }
+      'tax-knowledge-base'
     );
     
     return NextResponse.json({ success: true });
