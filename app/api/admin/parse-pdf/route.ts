@@ -3,7 +3,8 @@ import { auth } from '@/app/(auth)/auth';
 import * as pdfjs from 'pdfjs-dist';
 
 // Initialize PDF.js worker
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+const pdfjsWorker = await import('pdfjs-dist/build/pdf.worker.entry');
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 // Check if user is an admin
 async function isAdmin(userId: string) {

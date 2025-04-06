@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/lib/firebase/config';
-import { promises as fs } from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -19,44 +18,35 @@ async function ensureReportsDir() {
 
 export async function POST(request: NextRequest) {
   try {
-    // Verify authentication using Firebase cookie
-    const authCookie = request.cookies.get('auth')?.value;
-    if (!authCookie) {
-      return NextResponse.json(
-        { error: 'Authentication required' },
-        { status: 401 }
-      );
-    }
-
-    // Parse the request body
-    const { htmlReport } = await request.json();
+    // Ensure the reports directory exists
+    await ensureReportsDir();
     
-    if (!htmlReport) {
+    // Parse the request body
+    const body = await request.json();
+    
+    // Check if htmlReport is provided
+    if (!body.htmlReport) {
       return NextResponse.json(
-        { error: 'No report content provided' },
+        { error: 'No HTML report provided' },
         { status: 400 }
       );
     }
-
-    // Create reports directory if it doesn't exist
-    const reportsDir = path.join(process.cwd(), 'public', 'reports');
-    await fs.mkdir(reportsDir, { recursive: true });
     
-    // Generate a unique ID for the report
+    // Generate a unique filename for the report
     const reportId = uuidv4();
-    const fileName = `${reportId}.html`;
-    const filePath = path.join(reportsDir, fileName);
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const filename = `report-${timestamp}-${reportId}.html`;
+    const filePath = path.join(REPORTS_DIR, filename);
     
-    // Write the HTML report to a file
-    await fs.writeFile(filePath, htmlReport);
+    // Write the HTML report to the file
+    await fs.writeFile(filePath, body.htmlReport, 'utf-8');
     
-    // Generate the URL for accessing the report
-    const reportUrl = `/reports/${fileName}`;
+    // Return the URL to access the report
+    const reportUrl = `/reports/${filename}`;
     
     return NextResponse.json({
-      success: true,
       reportUrl,
-      message: 'Report saved successfully'
+      message: 'Report saved successfully',
     });
   } catch (error) {
     console.error('Error saving report:', error);

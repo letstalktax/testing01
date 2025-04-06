@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
-    "build": "node scripts/fix-dependencies.js && tsx lib/db/migrate && next build",
+    "build": "tsx lib/db/migrate && next build",
     "start": "next start",
     "lint": "next lint && biome lint --write --unsafe",
     "lint:fix": "next lint --fix && biome lint --write --unsafe",
@@ -72,7 +72,6 @@
     "langchain": "^0.3.19",
     "lucide-react": "^0.446.0",
     "mammoth": "^1.9.0",
-    "mime-types": "^3.0.1",
     "nanoid": "^5.0.8",
     "next": "15.2.3",
     "next-auth": "5.0.0-beta.25",

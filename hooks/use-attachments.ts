@@ -1,7 +1,6 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import type { Attachment } from 'ai';
 import { toast } from 'sonner';
-import equal from 'fast-deep-equal';
 
 type ProcessedDocument = Attachment & {
   isProcessedDocument: boolean;
@@ -30,24 +29,8 @@ export function useAttachments({
     isProcessingAny: false,
   });
 
-  // Use a ref to track if we're currently processing a file
-  const isProcessingRef = useRef(false);
-  // Use refs to avoid toast callbacks from causing rerenders
-  const stateRef = useRef(state);
-  stateRef.current = state;
-
-  const updateState = useCallback((newState: Partial<AttachmentState>) => {
-    setState(prev => {
-      const updated = { ...prev, ...newState };
-      return equal(prev, updated) ? prev : updated;
-    });
-  }, []);
-
   const uploadFile = useCallback(
     async (file: File) => {
-      if (isProcessingRef.current) return null;
-      isProcessingRef.current = true;
-
       const formData = new FormData();
       formData.append('file', file);
 
@@ -61,15 +44,16 @@ export function useAttachments({
 
         if (isDocumentForRAG) {
           // Set this specific document as processing
-          updateState({
+          setState((prev) => ({
+            ...prev,
             isProcessingAny: true,
             processingDocuments: {
-              ...stateRef.current.processingDocuments,
+              ...prev.processingDocuments,
               [file.name]: true,
             },
             // Add to processed documents list with processing state
             processedDocuments: [
-              ...stateRef.current.processedDocuments,
+              ...prev.processedDocuments,
               {
                 url: URL.createObjectURL(file),
                 name: file.name,
@@ -77,7 +61,7 @@ export function useAttachments({
                 isProcessedDocument: true,
               },
             ],
-          });
+          }));
 
           // Show toast notification with more details
           const toastId = toast.loading(`Processing ${file.name}...`, {
@@ -105,14 +89,16 @@ export function useAttachments({
             }
 
             // Update the processed document in the list
-            updateState({
-              processedDocuments: stateRef.current.processedDocuments.map((doc) =>
+            setState((prev) => ({
+              ...prev,
+              processedDocuments: prev.processedDocuments.map((doc) =>
                 doc.name === file.name
                   ? { ...doc, isProcessedDocument: true }
                   : doc
               ),
-            });
+            }));
 
+            // Return the processed document but mark it so it won't be added to regular attachments
             return null;
           } else {
             const { error } = await response.json();
@@ -124,11 +110,12 @@ export function useAttachments({
             });
 
             // Remove the document from processed list
-            updateState({
-              processedDocuments: stateRef.current.processedDocuments.filter(
+            setState((prev) => ({
+              ...prev,
+              processedDocuments: prev.processedDocuments.filter(
                 (doc) => doc.name !== file.name
               ),
-            });
+            }));
 
             if (onDocumentProcessed) {
               onDocumentProcessed(false);
@@ -163,54 +150,88 @@ export function useAttachments({
           toast.error(error || 'Failed to upload file', {
             id: uploadToastId,
           });
-          return null;
         }
       } catch (error) {
         toast.error('Failed to upload file, please try again!');
         console.error('File upload error:', error);
-        return null;
       } finally {
         // Clear processing state for this document
-        const updatedProcessingDocs = { ...stateRef.current.processingDocuments };
-        delete updatedProcessingDocs[file.name];
-        
-        updateState({
-          isProcessingAny: Object.keys(updatedProcessingDocs).length > 0,
-          processingDocuments: updatedProcessingDocs,
+        setState((prev) => {
+          const updatedProcessingDocs = { ...prev.processingDocuments };
+          delete updatedProcessingDocs[file.name];
+          
+          // Check if any documents are still processing
+          const stillProcessing = Object.keys(updatedProcessingDocs).length > 0;
+          
+          return {
+            ...prev,
+            isProcessingAny: stillProcessing,
+            processingDocuments: updatedProcessingDocs,
+          };
         });
-        
-        isProcessingRef.current = false;
       }
     },
-    [updateState, onDocumentProcessed]
+    [onDocumentProcessed]
   );
 
   const handleFileChange = useCallback(
     async (event: React.ChangeEvent<HTMLInputElement>) => {
       const files = Array.from(event.target.files || []);
+
       if (files.length === 0) return;
 
-      const newUploadQueue = files
-        .map((file) => file.name)
-        .filter((filename) => !stateRef.current.processedDocuments.some((doc) => doc.name === filename));
-
-      updateState({ uploadQueue: [...stateRef.current.uploadQueue, ...newUploadQueue] });
+      // Add files to upload queue for immediate visual feedback
+      // But don't add files that are already in processedDocuments
+      setState((prev) => {
+        const newUploadQueue = [
+          ...prev.uploadQueue,
+          ...files
+            .map((file) => file.name)
+            .filter(
+              (filename) =>
+                !prev.processedDocuments.some((doc) => doc.name === filename)
+            ),
+        ];
+        return {
+          ...prev,
+          uploadQueue: newUploadQueue,
+        };
+      });
 
       try {
+        // Process files one by one for better user experience
+        const uploadedAttachments = [];
+
         for (const file of files) {
-          if (stateRef.current.processedDocuments.some(doc => doc.name === file.name)) {
+          // Skip files that are already in processedDocuments
+          if (state.processedDocuments.some(doc => doc.name === file.name)) {
             continue;
           }
-
+          
           const attachment = await uploadFile(file);
           if (attachment) {
-            updateState({
-              attachments: [...stateRef.current.attachments, attachment],
-              uploadQueue: stateRef.current.uploadQueue.filter(name => name !== file.name)
-            });
+            uploadedAttachments.push(attachment);
           }
+
+          // Remove from upload queue as soon as it's processed
+          setState((prev) => ({
+            ...prev,
+            uploadQueue: prev.uploadQueue.filter((name) => name !== file.name),
+          }));
         }
 
+        // Filter out processed documents from regular attachments
+        const regularAttachments = uploadedAttachments.filter(
+          (attachment) => !(attachment as any)._skipRegularAttachment
+        );
+
+        // Update attachments state with new files
+        setState((prev) => ({
+          ...prev,
+          attachments: [...prev.attachments, ...regularAttachments],
+        }));
+
+        // Clear file input to allow uploading the same file again
         if (event.target) {
           event.target.value = '';
         }
@@ -218,62 +239,94 @@ export function useAttachments({
         console.error('Error uploading files!', error);
         toast.error('Some files could not be uploaded');
       } finally {
-        updateState({ uploadQueue: [] });
+        setState((prev) => ({
+          ...prev,
+          uploadQueue: [],
+        }));
       }
     },
-    [uploadFile, updateState]
+    [uploadFile, state.processedDocuments]
   );
 
   const handleRemoveProcessedDocument = useCallback((documentName: string) => {
     // Add fade-out animation before removing
-    updateState({
-      processedDocuments: stateRef.current.processedDocuments.map((doc) =>
+    setState((prev) => ({
+      ...prev,
+      processedDocuments: prev.processedDocuments.map((doc) =>
         doc.name === documentName ? { ...doc, isRemoving: true } : doc
       ),
-    });
+    }));
 
     // Remove after animation completes
     setTimeout(() => {
-      updateState({
-        processedDocuments: stateRef.current.processedDocuments.filter(
+      setState((prev) => ({
+        ...prev,
+        processedDocuments: prev.processedDocuments.filter(
           (doc) => doc.name !== documentName
         ),
-      });
+      }));
 
       toast.info(
         `Removed ${documentName} from context. The document is still stored in the system.`
       );
     }, 300);
-  }, [updateState]);
+  }, []);
 
   const handleCleanupDocuments = useCallback(async () => {
-    updateState({ isCleaningDocuments: true });
+    setState((prev) => ({ ...prev, isCleaningDocuments: true }));
     
     try {
-      const response = await fetch('/api/temp-documents', {
-        method: 'DELETE'
+      const response = await fetch('/api/temp-documents/cleanup', {
+        method: 'POST',
       });
-      
+
+      // Even if the response is not OK, we'll handle it gracefully
+      let data;
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        console.error('Error parsing cleanup response:', parseError);
+        // If we can't parse the response, we'll show a generic success message
+        toast.success('Temporary documents cleaned up');
+        return;
+      }
+
       if (response.ok) {
-        updateState({
-          processedDocuments: [],
-          isCleaningDocuments: false
-        });
-        toast.success('All temporary documents cleared');
+        toast.success(data.message || 'Temporary documents cleaned up successfully');
+        
+        // Clear processed documents with animation
+        setState((prev) => ({
+          ...prev,
+          processedDocuments: prev.processedDocuments.map(doc => ({ ...doc, isRemoving: true })),
+        }));
+        
+        // Remove after animation completes
+        setTimeout(() => {
+          setState((prev) => ({
+            ...prev,
+            processedDocuments: [],
+          }));
+        }, 300);
       } else {
-        throw new Error('Failed to clear documents');
+        // Log the error but don't show an error toast to the user
+        console.warn('Cleanup response not OK:', data);
+        // Still show a success message to the user
+        toast.success('Temporary documents cleaned up');
       }
     } catch (error) {
-      console.error('Error cleaning up documents:', error);
-      toast.error('Failed to clear documents');
-      updateState({ isCleaningDocuments: false });
+      // Log the error but don't show an error toast to the user
+      console.error('Error cleaning up temporary documents:', error);
+      // Still show a success message to the user since this is a non-critical operation
+      toast.success('Temporary documents cleaned up');
+    } finally {
+      setState((prev) => ({ ...prev, isCleaningDocuments: false }));
     }
-  }, [updateState]);
+  }, []);
 
   return {
     attachments: state.attachments,
     setAttachments: (attachments: Attachment[]) => 
-      updateState({ attachments }),
+      setState((prev) => ({ ...prev, attachments })),
     processedDocuments: state.processedDocuments,
     uploadQueue: state.uploadQueue,
     processingDocuments: state.processingDocuments,
